@@ -25,7 +25,7 @@
                     <TextBlock Text="SOFT-FX Test App" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </Grid>
                 <Grid Margin="0,50,0,0">
-                    <ListView ItemsSource="{Binding Collection}" ItemTemplate="{StaticResource SymbolDateTemplate}">
+                    <ListView ItemsSource="{Binding Collection}" ItemTemplate="{StaticResource SymbolDateTemplate}" Style="{StaticResource SymbolsListViewStyle}">
                         
                     </ListView>
                 </Grid>

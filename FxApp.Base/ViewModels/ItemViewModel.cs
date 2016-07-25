@@ -7,14 +7,14 @@ namespace FxApp.Base.ViewModels
         IItem
     {
         private string _name;
-        private decimal? _spread;
-        private DateTime? _actualDateTime;
-        private decimal? _fieldGreen1;
-        private decimal? _fieldGreen2;
-        private decimal? _fieldGreen3;
-        private decimal? _fieldRed1;
-        private decimal? _fieldRed2;
-        private decimal? _fieldRed3;
+        private decimal _spread;
+        private DateTime _actualDateTime;
+        private decimal _fieldGreen1;
+        private decimal _fieldGreen2;
+        private decimal _fieldGreen3;
+        private decimal _fieldRed1;
+        private decimal _fieldRed2;
+        private decimal _fieldRed3;
 
         public string Name
         {
@@ -26,7 +26,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public decimal? Spread
+        public decimal Spread
         {
             get { return _spread; }
             set
@@ -36,7 +36,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public DateTime? ActualDateTime
+        public DateTime ActualDateTime
         {
             get { return _actualDateTime; }
             set
@@ -46,7 +46,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public decimal? FieldGreen1
+        public decimal FieldGreen1
         {
             get { return _fieldGreen1; }
             set
@@ -56,7 +56,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public decimal? FieldGreen2
+        public decimal FieldGreen2
         {
             get { return _fieldGreen2; }
             set
@@ -66,7 +66,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public decimal? FieldGreen3
+        public decimal FieldGreen3
         {
             get { return _fieldGreen3; }
             set
@@ -76,7 +76,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public decimal? FieldRed1
+        public decimal FieldRed1
         {
             get { return _fieldRed1; }
             set
@@ -86,7 +86,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public decimal? FieldRed2
+        public decimal FieldRed2
         {
             get { return _fieldRed2; }
             set
@@ -96,7 +96,7 @@ namespace FxApp.Base.ViewModels
             }
         }
 
-        public decimal? FieldRed3
+        public decimal FieldRed3
         {
             get { return _fieldRed3; }
             set

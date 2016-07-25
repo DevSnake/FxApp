@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FxApp.Dictionaries">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DataTemplate x:Key="SymbolDateTemplate">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -9,10 +8,35 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
+            <Border BorderBrush="Silver" BorderThickness="1" CornerRadius="3" Grid.ColumnSpan="3"/>
+            <Border BorderBrush="Silver" BorderThickness="1" Grid.Column="1"/>
+            <StackPanel Grid.Column="0" Margin="5">
                 <TextBlock Text="{Binding Name}"/>
-                <TextBlock Text="{Binding Spread}"/>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Spread:" />
+                    <TextBlock Text="{Binding Spread}" Margin="5,0,0,0"/>
+                </StackPanel>
+                
                 <TextBlock Text="{Binding ActualDateTime}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="5">
+                <TextBlock Text="{Binding FieldGreen1}"/>
+                <TextBlock Text="{Binding FieldGreen2}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="L:"/>
+                    <TextBlock Text="{Binding FieldGreen3}" Margin="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="5">
+                <TextBlock Text="{Binding FieldRed1}"/>
+                <TextBlock Text="{Binding FieldRed2}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="H:"/>
+                    <TextBlock Text="{Binding FieldRed3}" Margin="5,0,0,0"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </DataTemplate>
