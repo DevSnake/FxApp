@@ -1,7 +1,8 @@
-﻿using System;
-
+﻿
 namespace FxApp.Base.ViewModels
 {
+    using System;
+
     interface IItem
     {
         string Name { get; set; }

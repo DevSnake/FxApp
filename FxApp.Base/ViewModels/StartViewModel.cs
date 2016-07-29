@@ -1,8 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using BlackBee.Common;
+﻿
 
 namespace FxApp.Base.ViewModels
 {
+    using System.Collections.ObjectModel;
+    using BlackBee.Common;
     public class StartViewModel:XBlackObject,
         IStart
     {

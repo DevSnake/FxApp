@@ -2,22 +2,25 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DataTemplate x:Key="SymbolDateTemplate">
-        <Grid>
+        <Grid >
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="Silver" BorderThickness="1" CornerRadius="3" Grid.ColumnSpan="3"/>
-            <Border BorderBrush="Silver" BorderThickness="1" Grid.Column="1"/>
+            <Border BorderBrush="{StaticResource FxBrushSilver}" BorderThickness="1" CornerRadius="3" Grid.ColumnSpan="4"/>
+            <Border BorderBrush="{StaticResource FxBrushSilver}" BorderThickness="1" CornerRadius="3" Grid.Column="3" Background="{StaticResource FxBrushSilver}"/>
+
+            <Border BorderBrush="{StaticResource FxBrushSilver}" BorderThickness="1" Grid.Column="1"/>
             <StackPanel Grid.Column="0" Margin="5">
                 <TextBlock Text="{Binding Name}"/>
-                
+
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Spread:" />
                     <TextBlock Text="{Binding Spread}" Margin="5,0,0,0"/>
                 </StackPanel>
-                
+
                 <TextBlock Text="{Binding ActualDateTime}"/>
             </StackPanel>
 
@@ -38,6 +41,16 @@
                     <TextBlock Text="{Binding FieldRed3}" Margin="5,0,0,0"/>
                 </StackPanel>
             </StackPanel>
+            <Grid Grid.Column="4">
+                <Rectangle Fill="{StaticResource FxBrushSilver}" Margin="0,0,10,0"/>
+                <Viewbox Height="58" Canvas.Left="0" Canvas.Top="155"  Width="49" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Canvas Width="24.362" Height="19.8817">
+                        <Path Width="23.402" Height="19.8817" Canvas.Left="0.960083" Canvas.Top="0" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FFFEFFFF" Data="F1 M 1.46008,19.3817L 10.1008,5.30042L 17.7815,10.4209L 23.862,0.5"/>
+                        <Path Width="24.042" Height="11.8809" Canvas.Left="0" Canvas.Top="8.0007" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FFFEFFFF" Data="F1 M 0.5,8.5007L 17.6215,19.3816L 23.542,12.661"/>
+                    </Canvas>
+                </Viewbox>
+
+            </Grid>
         </Grid>
     </DataTemplate>
 

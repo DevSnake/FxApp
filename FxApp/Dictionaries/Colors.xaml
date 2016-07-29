@@ -3,4 +3,5 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Color x:Key="FxColorOne">#FF10AAE0</Color>
+    <Color x:Key="FxColorSilver">#FF9DA5B2</Color>
 </ResourceDictionary>

@@ -1,8 +1,10 @@
-﻿using System;
-using BlackBee.Common;
+﻿
 
 namespace FxApp.Base.ViewModels
 {
+    using System;
+    using BlackBee.Common;
+
     public class ItemViewModel:XBlackObject,
         IItem
     {
