@@ -5,6 +5,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using FxApp.Base;
 
 namespace FxApp
 {
@@ -21,6 +22,7 @@ namespace FxApp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            AppMode.Instance.ConnectMode=ConnectMode.BaseURL;
         }
 
         /// <summary>

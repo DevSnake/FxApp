@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using BlackBee.Common;
+using FxApp.Base.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,11 +17,22 @@ namespace FxApp.Views
         public StartView()
         {
             this.InitializeComponent();
+            DataContext = StoreStorage.CreateOrGet<StartViewModel>();
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private async void Fill_OnClick(object sender, RoutedEventArgs e)
+        {
+            await StartViewModel.GetData();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            
         }
     }
 }

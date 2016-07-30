@@ -15,7 +15,10 @@
                 <Grid Background="{StaticResource FxBrushOne}">
                     <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" 
                         Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+                    
                 </Grid>
+                <Button x:Name="Fill" 
+                        Width="50" Height="50" Content="Fill" Click="Fill_OnClick"></Button>
             </StackPanel>
         </SplitView.Pane>
         
@@ -25,8 +28,8 @@
                     <TextBlock Text="SOFT-FX Test App" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </Grid>
                 <Grid Margin="0,50,0,0">
-                    <ListView ItemsSource="{Binding Collection}" Style="{StaticResource SymbolsListViewStyle}" Margin="0,10" 
-                          HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource SymbolDateTemplate}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
+                    <ListView ItemsSource="{Binding Collection}" Style="{StaticResource SymbolsListViewStyle}" Margin="0,10"
+                              ItemTemplate="{StaticResource SymbolDateTemplate}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                         
                     </ListView>
                 </Grid>
