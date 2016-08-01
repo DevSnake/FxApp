@@ -9,15 +9,16 @@ namespace FxApp.Data
 
     public sealed class BussinessContext: IDisposable
     {
-        private List<Tick> Ticks { get; set; }
+        private List<FeedTickModel> Ticks { get; set; }
 
         private readonly DataContext _context;
         private IAppMode _appMode;
 
         public BussinessContext(IAppMode appMode)
         {
-            _context=new DataContext(appMode.DbPath);
             _appMode = appMode;
+            _context =new DataContext(appMode.DbPath);
+            
         }
 
         public async Task CreateDatabase()
@@ -44,16 +45,17 @@ namespace FxApp.Data
             _disposed = true;
         }
 
-        public async Task<List<Tick>> GetTicks()
+        public async Task<List<FeedTickModel>> GetTicks()
         {
+
             return await _context.GetTicks();
         }
 
         #endregion
 
-        public async Task<Tick> CreateTick(string symbol)
+        public async Task<FeedTickModel> CreateTick(string symbol)
         {
-            var tick = new Tick()
+            var tick = new FeedTickModel()
             {
                Symbol = symbol
             };

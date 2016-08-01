@@ -1,23 +1,36 @@
 ﻿
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using FxApp.Data.Models;
+
+
+
+
+using FxApp.Data.ProxyClases;
+using FxApp.EasyCon;
 
 namespace FxApp.Data
 {
     using System;
     using SQLite;
-    
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Models;
 
     public class DataContext: IDisposable
     {
         private readonly SQLiteAsyncConnection _connection;
-
+        private readonly string _pathGetTisks;
         public DataContext(string dBpath)
         {
-            _connection=new SQLiteAsyncConnection(dBpath);
+            var baseAddress = "https://cryptottdemowebapi.xbtce.net:8443";
+            _connection =new SQLiteAsyncConnection(dBpath);
+            Proxy = new Proxy();
+            BaseAddress = baseAddress;
+            _pathGetTisks = "/api/v1/public/tick";
         }
+
+        protected string BaseAddress { get; set; }
+
+        protected IProxy Proxy { get;  set; }
 
         #region IDisposable
         /// <summary>
@@ -61,19 +74,22 @@ namespace FxApp.Data
 
         public async Task CreateDatabase()
         {
-           await _connection.CreateTableAsync<Tick>();
+           await _connection.CreateTableAsync<FeedTickModel>();
         }
 
-        public async Task<int> AddTick(Tick tick)
+        public async Task<int> AddTick(FeedTickModel feedTickModel)
         {
-           return await _connection.InsertAsync(tick);
+           return await _connection.InsertAsync(feedTickModel);
         }
 
-        public async Task<List<Tick>> GetTicks()
+        public async Task<List<FeedTickModel>> GetTicks()
         {
-            var query = _connection.Table<Tick>();
-            var ticks = await query.ToListAsync();
-            return ticks;
+            var result = await Proxy.GetAsync<List<FeedTick>>(BaseAddress + _pathGetTisks);
+
+            //var query = _connection.Table<FeedTickModel>();
+            //var ticks = await query.ToListAsync();
+            //return ticks;
+            return new List<FeedTickModel>();
         }
     }
 }

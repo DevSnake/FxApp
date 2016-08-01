@@ -1,13 +1,16 @@
-﻿using SQLite;
+﻿using System;
+using SQLite;
 
 namespace FxApp.Data.Models
 {
-    [Table("Ticks")]
-    public class Tick
+    [Table("FeedTick")]
+    public class FeedTickModel
     {
         [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
 
         public string Symbol { get; set; }
+
+        public DateTime TimeStamp { get; set; }
     }
 }
