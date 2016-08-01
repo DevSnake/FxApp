@@ -9,11 +9,11 @@
     mc:Ignorable="d">
 
     <SplitView DisplayMode="CompactOverlay" x:Name="MySplitView"
-               IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="200">
+               IsPaneOpen="False" CompactPaneLength="0" OpenPaneLength="200">
         <SplitView.Pane>
             <StackPanel>
-                <Grid Background="{StaticResource FxBrushOne}">
-                    <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" 
+                <Grid Background="{StaticResource FxBrushOne}" Height="50">
+                    <Button x:Name="HamburgerButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" 
                         Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
                     
                 </Grid>
@@ -24,7 +24,10 @@
         
         <SplitView.Content>
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                
                 <Grid Background="{StaticResource FxBrushOne}" VerticalAlignment="Top" Height="50">
+                    <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" 
+                        Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
                     <TextBlock Text="SOFT-FX Test App" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </Grid>
                 <Grid Margin="0,50,0,0">
