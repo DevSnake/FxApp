@@ -4,6 +4,7 @@
 
 
 
+using System.Linq;
 using FxApp.Data.ProxyClases;
 using FxApp.EasyCon;
 
@@ -84,12 +85,17 @@ namespace FxApp.Data
 
         public async Task<List<FeedTickModel>> GetTicks()
         {
+            List<FeedTickModel> list = new List<FeedTickModel>();
             var result = await Proxy.GetAsync<List<FeedTick>>(BaseAddress + _pathGetTisks);
 
+            if (result != null)
+            {
+                list.AddRange(result.Select(item => new FeedTickModel() {Symbol = item.Symbol}));
+            }
             //var query = _connection.Table<FeedTickModel>();
             //var ticks = await query.ToListAsync();
             //return ticks;
-            return new List<FeedTickModel>();
+            return list;
         }
     }
 }
