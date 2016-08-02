@@ -1,10 +1,15 @@
-﻿namespace FxApp.Data.ProxyClases
+﻿using System.Runtime.Serialization;
+
+namespace FxApp.Data.ProxyClases
 {
+    [DataContract(Name = "Type")]
     public enum PriceType
     {
+        [EnumMember]
         // ReSharper disable once InconsistentNaming
-        ASK,
+        Ask,
+        [EnumMember]
         // ReSharper disable once InconsistentNaming
-        BID
+        Bid
     }
 }

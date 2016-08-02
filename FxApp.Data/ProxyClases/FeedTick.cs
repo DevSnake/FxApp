@@ -3,13 +3,19 @@
 namespace FxApp.Data.ProxyClases
 {
     [DataContract]
+    [KnownType(typeof(FeedTickLevel))]
     public class FeedTick
     {
         [DataMember(Name = "Symbol")]
         public string Symbol { get; set; }
+
         [DataMember(Name = "Timestamp")]
         public long Timestamp { get; set; }
-        //public FeedTickLevel BestBid { get; set; }
-        //public FeedTickLevel BestAsk { get; set; }
+
+        [DataMember(Name = "BestBid")]
+        public FeedTickLevel BestBid { get; set; }
+
+        [DataMember(Name = "BestAsk")]
+        public FeedTickLevel BestAsk { get; set; }
     }
 }
