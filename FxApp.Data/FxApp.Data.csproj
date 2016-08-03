@@ -111,6 +111,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Helpers\HelperConverterUnixDate.cs" />
     <Compile Include="IAppMode.cs" />
+    <Compile Include="Models\FeedTickLevelModel.cs" />
     <Compile Include="Models\FeedTickModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyClases\FeedTick.cs" />
