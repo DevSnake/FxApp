@@ -2,6 +2,7 @@
 
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using FxApp.Base.Helpers;
 using FxApp.Data;
 using FxApp.Data.Models;
 using SQLitePCL;
@@ -45,7 +46,11 @@ namespace FxApp.Base.ViewModels
                 foreach (var x in list)
                 {
                     StoreStorage.CreateOrGet<StartViewModel>().Collection.Add(
-                        new ItemViewModel() {Name = x.Symbol});
+                        new ItemViewModel()
+                        {
+                            Name = x.Symbol,
+                            ActualDateTime = x.TimeStamp
+                        });
                 }
             }
         }

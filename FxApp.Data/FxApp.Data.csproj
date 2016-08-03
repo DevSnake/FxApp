@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="BussinessContext.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="Helpers\HelperConverterUnixDate.cs" />
     <Compile Include="IAppMode.cs" />
     <Compile Include="Models\FeedTickModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

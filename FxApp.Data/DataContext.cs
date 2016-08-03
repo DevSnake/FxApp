@@ -5,6 +5,7 @@
 
 
 using System.Linq;
+using FxApp.Base.Helpers;
 using FxApp.Data.ProxyClases;
 using FxApp.EasyCon;
 
@@ -90,7 +91,10 @@ namespace FxApp.Data
 
             if (result != null)
             {
-                list.AddRange(result.Select(item => new FeedTickModel() {Symbol = item.Symbol}));
+                list.AddRange(result.Select(item => new FeedTickModel() {Symbol = item.Symbol,
+                    TimeStamp = HelperConverterUnixDate.DateTimeFromUnixTimestampSeconds(item.Timestamp),
+                    
+                }));
             }
             //var query = _connection.Table<FeedTickModel>();
             //var ticks = await query.ToListAsync();
