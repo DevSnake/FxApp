@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using FxApp.Data;
+using FxApp.Data.Models;
 
 namespace FxApp.Base.ViewModels
 {
@@ -37,15 +39,28 @@ namespace FxApp.Base.ViewModels
 
                 var list = await bc.GetTicks();
 
-                //foreach (var x in list)
-                //{
-                //    StoreStorage.CreateOrGet<StartViewModel>().Collection.Add(
-                //        new ItemViewModel()
-                //        {
-                //            Name = x.Symbol,
-                //            ActualDateTime = x.TimeStamp
-                //        });
-                //}
+                foreach (var item in list)
+                {
+                    //if (item.Levels != null)
+                    //{
+                    //    if (item.Levels.Any(x=>x.Type ==PriceType.Ask))
+                    //    {
+                    //        decimal value1 = item.Levels.Single(x => x.Type == PriceType.Ask).Price;
+                    //    }
+                        
+                    //}
+                    StoreStorage.CreateOrGet<StartViewModel>().Collection.Add(
+                        new ItemViewModel()
+                        {
+                            Name = item.Symbol,
+                            ActualDateTime = item.Timestamp,
+                            FieldGreen1 = item.Levels.Single(x => x.Type == PriceType.Ask).Price,
+                            FieldGreen2 = item.Levels.Single(x => x.Type == PriceType.Ask).Volume,
+
+                            FieldRed1 =  item.Levels.Single(x => x.Type == PriceType.Bid).Price,
+                            FieldRed2 = item.Levels.Single(x => x.Type == PriceType.Bid).Volume
+                        });
+                }
             }
         }
     }

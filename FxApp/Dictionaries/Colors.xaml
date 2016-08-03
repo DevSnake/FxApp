@@ -4,4 +4,5 @@
 
     <Color x:Key="FxColorOne">#FF10AAE0</Color>
     <Color x:Key="FxColorSilver">#FF9DA5B2</Color>
+    <Color x:Key="FxColorMainForeground">#FFE8FCFC</Color>
 </ResourceDictionary>

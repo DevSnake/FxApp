@@ -16,5 +16,11 @@ namespace FxApp.Data.Models
         public Guid FeedTickModel_ID { get; set; }
         public virtual FeedTickModel FeedTickModel { get; set; }
         public PriceType Type { get; set; }
+
+        
+        public decimal Price { get; set; }
+
+       
+        public decimal Volume { get; set; }
     }
 }

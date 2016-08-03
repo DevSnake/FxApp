@@ -63,15 +63,37 @@ namespace FxApp.Data
             SaveChanges();
             this.Database.EnsureCreated();
             SaveChanges();
+
             foreach (var item in result)
             {
+                List<FeedTickLevelModel> feedTickLevelModels = new List<FeedTickLevelModel>();
 
-                FeedTickLevelModel FeedTickLevelModel=new FeedTickLevelModel()
+                FeedTickLevelModel FeedTickLevelModelBid = new FeedTickLevelModel()
+                {
+                    FeedTickLevelModel_ID = Guid.NewGuid(),
+                    Type = PriceType.Bid
+                };
+                if (item.BestAsk != null)
+                {
+                    FeedTickLevelModelBid.Price = item.BestAsk.Price;
+                    FeedTickLevelModelBid.Volume = item.BestAsk.Volume;
+                }
+                    this.FeedTickLevelModel.Add(FeedTickLevelModelBid);
+                feedTickLevelModels.Add(FeedTickLevelModelBid);
+
+
+                FeedTickLevelModel FeedTickLevelModelAsk= new FeedTickLevelModel()
                 {
                     FeedTickLevelModel_ID = Guid.NewGuid(),
                     Type = PriceType.Ask
                 };
-                this.FeedTickLevelModel.Add(FeedTickLevelModel);
+                if (item.BestAsk != null)
+                {
+                    FeedTickLevelModelAsk.Price = item.BestAsk.Price;
+                    FeedTickLevelModelAsk.Volume = item.BestAsk.Volume;
+                }
+                this.FeedTickLevelModel.Add(FeedTickLevelModelAsk);
+                feedTickLevelModels.Add(FeedTickLevelModelAsk);
 
                 this.FeedTickModel.Add(new FeedTickModel()
                 {
@@ -79,10 +101,7 @@ namespace FxApp.Data
                   FeedTickModel_ID = Guid.NewGuid(),
                    Symbol = item.Symbol,
                    Timestamp = HelperConverterUnixDate.DateTimeFromUnixTimestampSeconds(item.Timestamp),
-                   Levels = new List<FeedTickLevelModel>()
-                   {
-                      FeedTickLevelModel
-                   }
+                   Levels = feedTickLevelModels                 
                 });
                 
             }

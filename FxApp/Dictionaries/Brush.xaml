@@ -8,4 +8,5 @@
     
     <SolidColorBrush x:Key="FxBrushOne" Color="{StaticResource FxColorOne}"></SolidColorBrush>
     <SolidColorBrush x:Key="FxBrushSilver" Color="{StaticResource FxColorSilver}"/>
+    <SolidColorBrush x:Key="FxBrushMainForeground" Color="{StaticResource FxColorMainForeground}"></SolidColorBrush>
 </ResourceDictionary>
