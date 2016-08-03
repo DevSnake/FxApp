@@ -1,6 +1,6 @@
 ﻿
 
-using System.Net.Http.Headers;
+
 
 namespace FxApp.EasyCon
 {
@@ -11,6 +11,7 @@ namespace FxApp.EasyCon
     using System.Diagnostics;
     using System.IO;
     using System.Net;
+    using System.Net.Http.Headers;
 
     public class Proxy : IProxy
     {

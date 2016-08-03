@@ -4,7 +4,6 @@
 
 
 
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Windows.ApplicationModel.Contacts;
@@ -13,7 +12,6 @@ using FxApp.Base.Helpers;
 using FxApp.Data.ProxyClases;
 using FxApp.EasyCon;
 using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Internal;
 
 namespace FxApp.Data
 {
@@ -24,14 +22,6 @@ namespace FxApp.Data
 
     public class DataContext: DbContext
     {
-        public DataContext():base()
-        {
-            var baseAddress = "https://cryptottdemowebapi.xbtce.net:8443";
-            Proxy = new Proxy();
-            BaseAddress = baseAddress;
-            _pathGetTisks = "/api/v1/public/tick";
-            
-        }
         public DbSet<FeedTickModel> FeedTickModel { get; set; }
         public DbSet<FeedTickLevelModel> FeedTickLevelModel { get; set; }
 
@@ -47,7 +37,13 @@ namespace FxApp.Data
             optionsBuilder.UseSqlite($"Data source={databaseFilePath}");
         }
         private readonly string _pathGetTisks;
-      
+        public DataContext()
+        {
+            var baseAddress = "https://cryptottdemowebapi.xbtce.net:8443";
+            Proxy = new Proxy();
+            BaseAddress = baseAddress;
+            _pathGetTisks = "/api/v1/public/tick";
+        }
 
         protected string BaseAddress { get; set; }
 
@@ -59,39 +55,7 @@ namespace FxApp.Data
             List<FeedTickModel> list = new List<FeedTickModel>();
             var result = await Proxy.GetAsync<List<FeedTick>>(BaseAddress + _pathGetTisks);
 
-            this.Database.EnsureDeleted();
-            SaveChanges();
-            this.Database.EnsureCreated();
-            SaveChanges();
-            foreach (var item in result)
-            {
 
-                FeedTickLevelModel FeedTickLevelModel=new FeedTickLevelModel()
-                {
-                    FeedTickLevelModel_ID = Guid.NewGuid(),
-                    Type = PriceType.Ask
-                };
-                this.FeedTickLevelModel.Add(FeedTickLevelModel);
-
-                this.FeedTickModel.Add(new FeedTickModel()
-                {
-
-                  FeedTickModel_ID = Guid.NewGuid(),
-                   Symbol = item.Symbol,
-                   Timestamp = HelperConverterUnixDate.DateTimeFromUnixTimestampSeconds(item.Timestamp),
-                   Levels = new List<FeedTickLevelModel>()
-                   {
-                      FeedTickLevelModel
-                   }
-                });
-                
-            }
-            
-            this.SaveChanges();
-            
-            
-
-           
             //if (result != null)
             //{
             //    var x = new FeedTickLevelModel();
@@ -107,7 +71,7 @@ namespace FxApp.Data
             //var query = _connection.Table<FeedTickModel>();
             //var ticks = await query.ToListAsync();
             //return ticks;
-            return this.FeedTickModel.ToList();
+            return list;
         }
     }
 }

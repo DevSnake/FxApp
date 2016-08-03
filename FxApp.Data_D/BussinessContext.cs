@@ -1,4 +1,8 @@
-﻿namespace FxApp.Data
+﻿
+
+
+
+namespace FxApp.Data
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +20,7 @@
             _appMode = appMode;
             _context =new DataContext();
             _context.Database.ApplyMigrations();
-            _context.Database.EnsureCreated();
+
         }
 
 
@@ -47,19 +51,5 @@
 
         #endregion
 
-
-        //public async Task<FeedTickModel> AddNewTick()
-        //{
-        //    var tick = new FeedTickModel()
-        //    {
-        //        FeedTickLevelModel = new FeedTickLevelModel()
-        //    };
-
-        //    _context.FeedTickModel.Add(tick);
-
-        //    await _context.SaveChangesAsync();
-
-        //    return tick;
-        //}
     }
 }

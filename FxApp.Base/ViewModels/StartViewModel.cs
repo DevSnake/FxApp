@@ -1,11 +1,5 @@
-﻿
-
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using FxApp.Base.Helpers;
+﻿using System.Threading.Tasks;
 using FxApp.Data;
-using FxApp.Data.Models;
-using SQLitePCL;
 
 namespace FxApp.Base.ViewModels
 {
@@ -34,24 +28,24 @@ namespace FxApp.Base.ViewModels
         {
             using (var bc = new BussinessContext(AppMode.Instance))
             {
-                await bc.CreateDatabase();
+                //await bc.CreateDatabase();
 
-                await bc.CreateTick("EURUSD");
+                //await bc.CreateTick("EURUSD");
 
-                await bc.CreateTick("USDCNH");
+                //await bc.CreateTick("USDCNH");
 
 
                 var list = await bc.GetTicks();
 
-                foreach (var x in list)
-                {
-                    StoreStorage.CreateOrGet<StartViewModel>().Collection.Add(
-                        new ItemViewModel()
-                        {
-                            Name = x.Symbol,
-                            ActualDateTime = x.TimeStamp
-                        });
-                }
+                //foreach (var x in list)
+                //{
+                //    StoreStorage.CreateOrGet<StartViewModel>().Collection.Add(
+                //        new ItemViewModel()
+                //        {
+                //            Name = x.Symbol,
+                //            ActualDateTime = x.TimeStamp
+                //        });
+                //}
             }
         }
     }

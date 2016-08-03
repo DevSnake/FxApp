@@ -1,19 +1,27 @@
-﻿using System;
-using SQLite;
+﻿
+
+
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FxApp.Data.Models
 {
-    [Table("FeedTick")]
+    using System.Collections.Generic;
+
     public class FeedTickModel
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public FeedTickModel()
+        {
+            Levels=new HashSet<FeedTickLevelModel>();
+        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid FeedTickModel_ID { get; set; }
 
         public string Symbol { get; set; }
+        public DateTime Timestamp { get; set; }
 
-        public DateTime TimeStamp { get; set; }
-
-        public int AskId { get; set; }
-        public int BidId { get; set; }
+        public virtual ICollection<FeedTickLevelModel> Levels { get; set; }
     }
 }

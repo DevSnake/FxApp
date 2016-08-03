@@ -1,8 +1,9 @@
 ﻿{
   "dependencies": {
-    "BlackBee": "1.0.28",
     "EntityFramework.SQLite": "7.0.0-beta6",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "sqlite-net-pcl": "1.1.2",
+    "SQLiteNetExtensions-MvvmCross": "1.2.4"
   },
   "frameworks": {
     "uap10.0": {}

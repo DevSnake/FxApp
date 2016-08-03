@@ -1,12 +1,20 @@
-﻿using SQLite;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FxApp.Data.Models
 {
-    [Table("FeedTickLevel")]
+
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using Windows.ApplicationModel.Contacts;
 
     public class FeedTickLevelModel
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid FeedTickLevelModel_ID { get; set; }
+        public Guid FeedTickModel_ID { get; set; }
+        public virtual FeedTickModel FeedTickModel { get; set; }
+        public PriceType Type { get; set; }
     }
 }

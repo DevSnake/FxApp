@@ -1,6 +1,5 @@
 ﻿
 using System.Diagnostics;
-using System.IO;
 
 namespace FxApp.Base
 {
