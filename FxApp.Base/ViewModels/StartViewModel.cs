@@ -1,10 +1,11 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using FxApp.Data;
-using FxApp.Data.Models;
+﻿
 
 namespace FxApp.Base.ViewModels
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Data;
+    using Data.Models;
     using System.Collections.ObjectModel;
     using BlackBee.Common;
     public class StartViewModel:XBlackObject,
