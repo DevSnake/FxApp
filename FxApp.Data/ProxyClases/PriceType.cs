@@ -1,7 +1,8 @@
-﻿using System.Runtime.Serialization;
-
+﻿
 namespace FxApp.Data.ProxyClases
 {
+    using System.Runtime.Serialization;
+
     [DataContract(Name = "Type")]
     public enum PriceType
     {

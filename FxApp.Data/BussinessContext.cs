@@ -8,6 +8,7 @@
 
     public sealed class BussinessContext: IDisposable
     {
+        private readonly SeviceContext _seviceContext;
         private readonly DataContext _context;
         private IAppMode _appMode;
 
@@ -17,6 +18,9 @@
             _context =new DataContext();
             _context.Database.ApplyMigrations();
             _context.Database.EnsureCreated();
+
+
+            _seviceContext=new SeviceContext(appMode.ServiceBaseUrl);
         }
 
 
@@ -41,25 +45,16 @@
 
         public async Task<List<FeedTickModel>> GetTicks()
         {
+            var serviceRes=await _seviceContext.Api_Get_GetTicks();
 
-            return await _context.GetTicks();
+            if (serviceRes == null) return _context.GetTicks();
+
+            _context.AddTicksRange(serviceRes);
+
+            return _context.GetTicks();
         }
 
         #endregion
 
-
-        //public async Task<FeedTickModel> AddNewTick()
-        //{
-        //    var tick = new FeedTickModel()
-        //    {
-        //        FeedTickLevelModel = new FeedTickLevelModel()
-        //    };
-
-        //    _context.FeedTickModel.Add(tick);
-
-        //    await _context.SaveChangesAsync();
-
-        //    return tick;
-        //}
     }
 }

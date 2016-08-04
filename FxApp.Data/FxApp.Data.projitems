@@ -19,5 +19,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ProxyClases\FeedTick.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ProxyClases\FeedTickLevel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ProxyClases\PriceType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SeviceContext.cs" />
   </ItemGroup>
 </Project>

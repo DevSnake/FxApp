@@ -1,8 +1,6 @@
-﻿using System.Runtime.Serialization;
-
-namespace FxApp.Data.Models
+﻿namespace FxApp.Data.Models
 {
-    public enum PriceType
+    public enum PriceTypeModel
     {
         Ask,
         Bid

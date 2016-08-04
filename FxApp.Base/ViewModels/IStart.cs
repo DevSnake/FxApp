@@ -5,8 +5,9 @@ namespace FxApp.Base
     using System.Collections.ObjectModel;
     using ViewModels;
 
-    internal interface IStart
+    public interface IStart
     {
+        IStartMethods StartMethods { get; }
         ObservableCollection<ItemViewModel> Collection{ get; set; }
     }
 }

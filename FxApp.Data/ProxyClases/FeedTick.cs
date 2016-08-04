@@ -1,8 +1,4 @@
-﻿
-
-
-
-namespace FxApp.Data.ProxyClases
+﻿namespace FxApp.Data.ProxyClases
 {
     using System.Runtime.Serialization;
 

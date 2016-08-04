@@ -1,7 +1,4 @@
-﻿
-
-
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,9 +12,10 @@ namespace FxApp.Data.Models
         {
             Levels=new HashSet<FeedTickLevelModel>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid FeedTickModel_ID { get; set; }
+        public Guid FeedTickId { get; set; }
 
         public string Symbol { get; set; }
         public DateTime Timestamp { get; set; }

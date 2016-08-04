@@ -1,21 +1,17 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace FxApp.Data.Models
+﻿namespace FxApp.Data.Models
 {
-
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Windows.ApplicationModel.Contacts;
+    using System;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class FeedTickLevelModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid FeedTickLevelModel_ID { get; set; }
-        public Guid FeedTickModel_ID { get; set; }
+        public Guid FeedTickLevelId { get; set; }
+        public Guid FeedTickId { get; set; }
         public virtual FeedTickModel FeedTickModel { get; set; }
-        public PriceType Type { get; set; }
+        public PriceTypeModel Type { get; set; }
 
         
         public decimal Price { get; set; }

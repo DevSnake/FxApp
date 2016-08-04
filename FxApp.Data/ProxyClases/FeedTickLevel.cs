@@ -1,8 +1,10 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿
 
 namespace FxApp.Data.ProxyClases
 {
+    using System;
+    using System.Runtime.Serialization;
+
     // ReSharper disable once ClassNeverInstantiated.Global
     [DataContract]
     public class FeedTickLevel

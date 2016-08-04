@@ -1,8 +1,10 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace FxApp.EasyCon
 {
     using System.Text;
-    using System.Threading.Tasks;
+
 
     public interface IProxy
     {

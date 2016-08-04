@@ -23,7 +23,7 @@ namespace FxApp.EasyCon
             HelperStreamReader = new HelperStreamReader();
         }
 
-        public void CreateHandler()
+        private void CreateHandler()
         {
             HttpClientHandler handler = new HttpClientHandler()
             {
@@ -32,17 +32,11 @@ namespace FxApp.EasyCon
             HttpClient = new HttpClient(handler) { Timeout = new TimeSpan(0, 0, 60) };
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
-            //HttpClient = handler == null ? new HttpClient() {Timeout = new TimeSpan(0, 0, 60)} : new HttpClient(handler);
-            //HttpClient.DefaultRequestHeaders
-            //    .Accept
-            //    .Add(new MediaTypeWithQualityHeaderValue("application/json")); //ACCEPT header
         }
 
         public async Task<TResult> GetAsync<TResult>(string uri, Encoding encoding = null) where
             TResult : class
         {
-            //content = content ?? new Content();
-            //var encodedContent = new EncodedContent(content, encoding);
             encoding = encoding ?? Encoding.UTF8;
             
             Debug.WriteLine("### Dev Windows Phone Log : >> url =  " + uri);
@@ -50,9 +44,7 @@ namespace FxApp.EasyCon
             
             var response = await HttpClient.GetAsync(uri);
             
-            var result = await GetObject<TResult>(response, encoding);
-
-            return result;
+            return await GetObject<TResult>(response, encoding);
         }
 
         private async Task<TResult> GetObject<TResult>(HttpResponseMessage response, Encoding encoding = null)

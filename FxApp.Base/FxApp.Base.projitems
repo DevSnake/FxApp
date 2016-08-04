@@ -14,7 +14,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ConnectMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IStart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IStartCommands.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IStartMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StartLogic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StartViewModel.cs" />
   </ItemGroup>
 </Project>
