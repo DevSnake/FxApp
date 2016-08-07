@@ -6,9 +6,10 @@
     using Data.Models;
     using System.Collections.ObjectModel;
     using BlackBee.Common;
+    using System.Collections.Generic;
 
-    public class StartViewModel:XBlackObject,
-        IStart,IStartMethods, IStartCommands
+    public class StartViewModel : XBlackObject,
+        IStart, IStartMethods, IStartCommands
     {
 
         private ObservableCollection<ItemViewModel> _collection;
@@ -27,30 +28,40 @@
 
         public StartViewModel()
         {
-            _collection=new ObservableCollection<ItemViewModel>();
+            _collection = new ObservableCollection<ItemViewModel>();
             StartMethods = new StartLogic(this);
         }
-        public static async Task GetData()
+        public static async Task<ObservableCollection<ItemViewModel>> GetData()
         {
-            using (var bc = new BussinessContext(AppMode.Instance))
-            {
-                var list = await bc.GetTicks();
+            return await await Task.Factory.StartNew(async () =>
+             {
+                 ObservableCollection<ItemViewModel> collection = new ObservableCollection<ItemViewModel>();
+                 using (var bc = new BussinessContext(AppMode.Instance))
+                 {
+                     var list = await bc.GetTicks();
 
-                foreach (var item in list)
-                {
-                    StoreStorage.CreateOrGet<StartViewModel>().Collection.Add(
-                        new ItemViewModel()
-                        {
-                            Name = item.Symbol,
-                            ActualDateTime = item.Timestamp,
-                            FieldGreen1 = item.Levels.Single(x => x.Type == PriceTypeModel.Ask).Price,
-                            FieldGreen2 = item.Levels.Single(x => x.Type == PriceTypeModel.Ask).Volume,
+                     {
+                         foreach (var item in list)
+                         {
+                             collection.Add(
+                                        new ItemViewModel()
+                                        {
+                                            Name = item.Symbol,
+                                            ActualDateTime = item.Timestamp,
+                                            FieldGreen1 = item.Levels.Single(x => x.Type == PriceTypeModel.Ask).Price,
+                                            FieldGreen2 = item.Levels.Single(x => x.Type == PriceTypeModel.Ask).Volume,
 
-                            FieldRed1 =  item.Levels.Single(x => x.Type == PriceTypeModel.Bid).Price,
-                            FieldRed2 = item.Levels.Single(x => x.Type == PriceTypeModel.Bid).Volume
-                        });
-                }
-            }
+                                            FieldRed1 = item.Levels.Single(x => x.Type == PriceTypeModel.Bid).Price,
+                                            FieldRed2 = item.Levels.Single(x => x.Type == PriceTypeModel.Bid).Volume
+                                        }
+                                    );
+                         }
+
+                     }
+
+                 }
+                 return collection;
+             });
         }
     }
 }

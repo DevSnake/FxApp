@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AppConnect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AppMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConnectMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AccountViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IStart.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IStartCommands.cs" />

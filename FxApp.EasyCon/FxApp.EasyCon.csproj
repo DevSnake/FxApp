@@ -110,6 +110,7 @@
     <Compile Include="Content.cs" />
     <Compile Include="EncodedContent.cs" />
     <Compile Include="HelperStreamReader.cs" />
+    <Compile Include="HMACHttpClientHandler.cs" />
     <Compile Include="IHelperStreamReader.cs" />
     <Compile Include="IProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

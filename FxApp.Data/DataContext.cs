@@ -2,6 +2,7 @@
 
 namespace FxApp.Data
 {
+    using Base.Helpers;
     using ProxyClases;
     using System.IO;
     using System.Linq;
@@ -10,6 +11,7 @@ namespace FxApp.Data
     using System;
     using System.Collections.Generic;
     using Models;
+    using System.Threading.Tasks;
 
     public class DataContext: DbContext
     {
@@ -28,7 +30,7 @@ namespace FxApp.Data
 
             optionsBuilder.UseSqlite($"Data source={databaseFilePath}");
         }
-        
+
 
 
         public List<FeedTickModel> GetTicks()
@@ -75,6 +77,8 @@ namespace FxApp.Data
                 this.FeedTickModel.Add(new FeedTickModel()
                 {
                     FeedTickId = Guid.NewGuid(),
+                    Symbol = serviceItem.Symbol,
+                    Timestamp=HelperConverterUnixDate.DateTimeFromUnixTimestampSeconds(serviceItem.Timestamp),
                     Levels = new List<FeedTickLevelModel>() {feedTickLevelModelBid, feedTickLevelModelAsk}
                 });
                 SaveChanges();

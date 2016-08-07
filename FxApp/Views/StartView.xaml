@@ -4,8 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModels="using:FxApp.Base.ViewModels"
-    d:DataContext="{d:DesignInstance viewModels:StartViewModel}"
     mc:Ignorable="d">
 
     <SplitView DisplayMode="CompactOverlay" x:Name="MySplitView"
@@ -17,6 +15,9 @@
                         Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
 
                 </Grid>
+                <!-- Home button -->
+                <RadioButton Content="Home" Checked="OnHomeButtonChecked" IsChecked="True" />
+                <RadioButton Content="Acccount" Checked="OnAcccountButtonChecked" IsChecked="True" />
                 <Button x:Name="Fill" 
                         Width="50" Height="50" Content="Fill" Click="Fill_OnClick"></Button>
             </StackPanel>
@@ -36,7 +37,19 @@
                     <Button FontFamily="Segoe MDL2 Assets" Content="&#xE713;" HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" 
                             Foreground="{StaticResource FxBrushMainForeground}"></Button>
                 </Grid>
-                <Grid Margin="0,50,0,0">
+                <!-- Navigation Frame -->
+                <Frame x:Name="SplitViewFrame" Margin="0,50,0,0"> 
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition>
+                                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                    <EntranceNavigationTransitionInfo />
+                                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                            </NavigationThemeTransition>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+                <!--<Grid Margin="0,50,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -48,7 +61,7 @@
                               ItemTemplate="{StaticResource SymbolDateTemplate}" ItemContainerStyle="{StaticResource ListViewItemStyle}" Grid.RowSpan="1">
 
                     </ListView>
-                </Grid>
+                </Grid>-->
             </Grid>
         </SplitView.Content>
     </SplitView>

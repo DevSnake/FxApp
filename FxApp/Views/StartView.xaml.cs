@@ -17,6 +17,7 @@ namespace FxApp.Views
         {
             this.InitializeComponent();
             DataContext = StoreStorage.CreateOrGet<StartViewModel>();
+            SplitViewFrame.Navigate(typeof(TicksView));
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -26,12 +27,24 @@ namespace FxApp.Views
 
         private async void Fill_OnClick(object sender, RoutedEventArgs e)
         {
-            await StartViewModel.GetData();
+            //await StartViewModel.GetData();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+
+        private void OnHomeButtonChecked(object sender, RoutedEventArgs e)
         {
-            
+            MySplitView.IsPaneOpen = false;
+            if (MySplitView.Content != null)
+                SplitViewFrame.Navigate(typeof(TicksView));
+
+        }
+
+        private void OnAcccountButtonChecked(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = false;
+            if (MySplitView.Content != null)
+                SplitViewFrame.Navigate(typeof(AccountView));
+
         }
     }
 }

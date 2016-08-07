@@ -19,17 +19,21 @@ namespace FxApp.EasyCon
         public IHelperStreamReader HelperStreamReader { get; private set; }
         public Proxy()
         {
-            CreateHandler();
+            CreatePublicHandler();
             HelperStreamReader = new HelperStreamReader();
         }
 
-        private void CreateHandler()
+        private void CreatePublicHandler()
         {
             HttpClientHandler handler = new HttpClientHandler()
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
-            HttpClient = new HttpClient(handler) { Timeout = new TimeSpan(0, 0, 60) };
+            HttpClient = new HttpClient(handler)
+            {
+                Timeout = new TimeSpan(0, 0, 60)
+            };
+            HttpClient.DefaultRequestHeaders.Accept.Clear();
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
         }

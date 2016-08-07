@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="FxApp.Views.TicksView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FxApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:FxApp.Base.ViewModels"
+    d:DataContext="{d:DesignInstance viewModels:StartViewModel}"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Background="#FFF4F5F7">
+                <CheckBox Margin="10" Content="Extended View"></CheckBox>
+            </StackPanel>
+            <ListView Grid.Row="1" ItemsSource="{Binding Collection}" Style="{StaticResource SymbolsListViewStyle}" Margin="0,10"
+                        ItemTemplate="{StaticResource SymbolDateTemplate}" ItemContainerStyle="{StaticResource ListViewItemStyle}" Grid.RowSpan="1">
+
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>
